@@ -9,4 +9,5 @@ LiveData
 Glide
 Room
 Firebase CrashAnalytics
+Work Manager
 It also includes support for night and day themes.

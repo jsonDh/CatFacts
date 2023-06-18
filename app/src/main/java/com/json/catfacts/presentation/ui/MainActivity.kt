@@ -40,7 +40,16 @@ class MainActivity : AppCompatActivity() {
         getCatFactOTD()
         getStoredFacts()
         showErrorMessages()
+        handleViews()
 
+    }
+
+    private fun getStoredFacts() {
+        dbCatFactViewModel.getStoredFacts()
+        displayCatFactsList()
+    }
+
+    private fun handleViews(){
         bottomSheet = BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 190
             this.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -57,11 +66,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun getStoredFacts() {
-        dbCatFactViewModel.getStoredFacts()
-        displayCatFactsList()
+        catFactsViewModel.hideBottomSheet.observe(this){shouldHideSheet ->
+            when {
+                shouldHideSheet -> {
+                    bottomSheet.apply {
+                        peekHeight = 0
+                        this.state = BottomSheetBehavior.STATE_COLLAPSED
+                    }
+                }
+                else -> {
+                    bottomSheet.apply {
+                        peekHeight = 190
+                    }
+                }
+            }
+        }
     }
 
     private fun getCatFactOTD() {

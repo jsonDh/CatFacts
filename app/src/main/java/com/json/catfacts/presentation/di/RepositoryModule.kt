@@ -6,6 +6,7 @@ import com.json.catfacts.data.repository.ImagesRepositoryImpl
 import com.json.catfacts.domain.repository.CatFactRepository
 import com.json.catfacts.domain.repository.DBRepository
 import com.json.catfacts.domain.repository.ImagesRepository
+import com.json.catfacts.utils.AppPreferences
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,5 +28,6 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun bindImagesRepository(imagesRepositoryImpl: ImagesRepositoryImpl): ImagesRepository
+
 
 }

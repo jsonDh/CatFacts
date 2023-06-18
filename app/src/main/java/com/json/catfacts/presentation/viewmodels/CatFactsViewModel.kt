@@ -12,6 +12,7 @@ class CatFactsViewModel @Inject constructor(
     val catFactList = MutableLiveData<List<CatFact>>()
     val errorMessage = MutableLiveData<String>()
     val loading = MutableLiveData<Boolean>()
+    val hideBottomSheet = MutableLiveData<Boolean>()
 
     companion object {
         private const val TAG = "CAT-FACT_VM"
